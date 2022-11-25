@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AsyncAPILoader</string>
+    <string name="msg_loading_data">Loading data</string>
 </resources>
