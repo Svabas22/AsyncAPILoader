@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this , neoDetails.class);
+                Intent intent = new Intent(MainActivity.this, Info.class);
                 MainActivity.this.startActivity(intent);
             }
         });
@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                         public void run() {
 
                             pd.dismiss();
-                            Log.d("kys", resultList.get(3).getDes());
+
                             adapter = new NeoAdapter(MainActivity.this, resultList);
                             GridLayoutManager manager = new GridLayoutManager(MainActivity.this, 1);
                             manager.isAutoMeasureEnabled();

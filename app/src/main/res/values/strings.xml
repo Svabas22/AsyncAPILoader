@@ -5,19 +5,19 @@
     <string name="exec">Get Data</string>
     <string name="infobtn">INFO</string>
     <string name="info">This API provides access to current close-approach data for all asteroids and comets in JPL’s SBDB (Small-Body DataBase). Defaults for query parameters are setup for a typical CNEOS web-site search: NEO Earth close-approaches less than 0.05 au in the next 60 days sorted by date.
-    des - primary designation of the asteroid or comet (e.g., 443, 2000 SG344)
-    orbit_id - orbit ID
-    jd - time of close-approach (JD Ephemeris Time, TDB)
-    cd - time of close-approach (formatted calendar date/time, TDB)
-    dist - nominal approach distance (au)
-    dist_min - minimum (3-sigma) approach distance (au)
-    dist_max - maximum (3-sigma) approach distance (au)
-    v_rel - velocity relative to the approach body at close approach (km/s)
-    v_inf - velocity relative to a massless body (km/s)
-    t_sigma_f - 3-sigma uncertainty in the time of close-approach (formatted in days, hours, and minutes; days are not included if zero; example “13:02” is 13 hours 2 minutes; example “2_09:08” is 2 days 9 hours 8 minutes)
-    body - name of the close-approach body (e.g., Earth)
+    \n \n des - primary designation of the asteroid or comet (e.g., 443, 2000 SG344)
+    \n orbit_id - orbit ID
+    \n jd - time of close-approach (JD Ephemeris Time, TDB)
+    \n cd - time of close-approach (formatted calendar date/time, TDB)
+    \n dist - nominal approach distance (au)
+    \n dist_min - minimum (3-sigma) approach distance (au)
+    \n dist_max - maximum (3-sigma) approach distance (au)
+    \n v_rel - velocity relative to the approach body at close approach (km/s)
+    \n v_inf - velocity relative to a massless body (km/s)
+    \n t_sigma_f - 3-sigma uncertainty in the time of close-approach (formatted in days, hours, and minutes; days are not included if zero; example “13:02” is 13 hours 2 minutes; example “2_09:08” is 2 days 9 hours 8 minutes)
+    \n body - name of the close-approach body (e.g., Earth)
     only output if the body query parameters is set to ALL
-    h - absolute magnitude H (mag)
+    \n h - absolute magnitude H (mag)
     </string>
 
 </resources>
