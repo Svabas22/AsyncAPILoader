@@ -4,10 +4,13 @@ import com.example.asyncapiloader.Constants;
 import com.example.asyncapiloader.databinding.ActivityMainBinding;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -22,12 +25,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private ListView result;
-    private Button exec;
+    RecyclerView result;
+    Button exec, info;
     ActivityMainBinding binding;
     ArrayList<NeoClass> resultList;
-    ArrayAdapter<NeoClass> listAdapter;
-    private TextView prompt;
+    NeoAdapter adapter;
+    TextView prompt;
     ProgressDialog pd;
 
     @Override
@@ -38,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
         this.result = findViewById(R.id.result);
         this.exec = findViewById(R.id.btnExecute);
+        this.info = findViewById(R.id.btnInfo);
         this.prompt = findViewById(R.id.prompt);
 
         resultList = new ArrayList<NeoClass>();
@@ -47,12 +51,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 getData();
-                Toast.makeText(getApplicationContext(), R.string.msg_loading_data, Toast.LENGTH_LONG).show();
-                Log.d("kys", String.valueOf(resultList.size()));
+
             }
         });
 
-
+        info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this , neoDetails.class);
+                MainActivity.this.startActivity(intent);
+            }
+        });
 
     }
 
@@ -69,16 +78,20 @@ public class MainActivity extends AppCompatActivity {
                     Runnable updateUIRunnable = new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(getApplicationContext(), "Some error occurred!!", Toast.LENGTH_SHORT).show();
+
                             pd.dismiss();
                             Log.d("kys", resultList.get(3).getDes());
-                            //listAdapter = new ArrayAdapter<NeoClass>(MainActivity.this, android.R.layout.simple_list_item_1, resultList);
-                            //result.setAdapter(listAdapter);
-                            //listAdapter.notifyDataSetChanged();
+                            adapter = new NeoAdapter(MainActivity.this, resultList);
+                            GridLayoutManager manager = new GridLayoutManager(MainActivity.this, 1);
+                            manager.isAutoMeasureEnabled();
+                            result.setAdapter(adapter);
+                            result.setLayoutManager(manager);
+                            adapter.notifyDataSetChanged();
                         }
                     };
                     runOnUiThread(updateUIRunnable);
                 } catch (IOException e) {
+                    Toast.makeText(getApplicationContext(), "Some error occurred!!", Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
                 }
             }
